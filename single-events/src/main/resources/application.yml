@@ -1,0 +1,26 @@
+server.port: 8087
+
+topic:
+  product-name: product
+  person-name: person
+  partitions-num: 1
+
+spring:
+  kafka:
+    producer:
+      bootstrap-servers: 127.0.0.1:29092
+      client-id: event-producer
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      properties:
+        schema.registry.url: 127.0.0.1:8081
+    consumer:
+      bootstrap-servers: 127.0.0.1:29092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      properties:
+        specific.avro.reader: true
+        schema.registry.url: 127.0.0.1:8081
+      auto-offset-reset: earliest
+    listener:
+      missing-topics-fatal: true
