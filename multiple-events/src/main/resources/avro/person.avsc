@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "namespace": "fd.app.avro",
+  "name": "Person",
+  "fields": [
+    {"name": "id", "type": "long"},
+    {"name": "nom", "type": "string"},
+    {"name": "email", "type": "string"},
+    {"name": "adresse", "type": "string"}
+  ]
+}
